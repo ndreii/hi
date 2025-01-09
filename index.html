@@ -1,133 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love & Comfort</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            text-align: center;
-            padding: 50px;
-            background-image: url('https://emoji.gg/assets/emoji/dinosaur.png'), url('https://emoji.gg/assets/emoji/cat.png');
-            background-size: 50px;
-            background-repeat: repeat;
-        }
-        h1 {
-            color: #333;
-        }
-        .button-container {
-            margin-top: 20px;
-        }
-        .button {
-            background-color: #8BC34A; /* Green for her */
-            color: white;
-            padding: 15px 30px;
-            margin: 10px;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        .button:hover {
-            background-color: #7B9F34;
-        }
-        .heart {
-            font-size: 50px;
-            color: #FF4081;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        .message-box {
-            margin-top: 20px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            display: none;
-            color: #333;
-        }
-        .message-box p {
-            font-size: 16px;
-            color: #333;
-        }
-        .message-box button {
-            background-color: #FF4081;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .message-box button:hover {
-            background-color: #FF80AB;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For the Love of My Life</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: white;
+      text-align: center;
+      background: linear-gradient(to bottom, #001f3f, #FF4136);
+      background-attachment: fixed;
+      background-size: cover;
+    }
+
+    body::before {
+      content: "🦖🦕🦖🦖🦕🦖🦕🦖🦕🦖🦕🦖🦖🦕🦖";
+      font-size: 3rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+      animation: moveBackground 10s linear infinite;
+    }
+
+    @keyframes moveBackground {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+
+    h1 {
+      margin: 20px 0;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .options {
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 25px;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background: #2ECC40;
+      text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .message-box {
+      display: none;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #FF4136;
+      background: white;
+      border-radius: 15px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: red;
+      color: white;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .heart-animation {
+      position: fixed;
+      font-size: 2rem;
+      animation: float 2s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(0.7);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-150px) scale(1.3);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 <body>
+  <h1>For the Love of My Life</h1>
+  <p>Click the options below, and let my love guide you wherever you are.</p>
 
-<h1>Welcome, my love. How can I comfort you today?</h1>
-<div class="button-container">
+  <div id="options" class="options">
+    <button class="button" onclick="showMessages('sad')">Open this when you're sad</button>
+    <button class="button" onclick="showMessages('happy')">Open this when you're happy</button>
+    <button class="button" onclick="showMessages('stressed')">Open this when you're stressed</button>
+    <button class="button" onclick="showMessages('miss')">Open this when you miss me</button>
+    <button class="button" onclick="showMessages('tired')">Open this when you're tired</button>
     <button class="button" onclick="showMessages('angry')">Open this when you're angry with me</button>
     <button class="button" onclick="showMessages('insecure')">Open this when you're insecure</button>
     <button class="button" onclick="showMessages('sick')">Open this when you're not feeling well</button>
     <button class="button" onclick="showMessages('achieve')">Open this when you achieve something</button>
-    <button class="button" onclick="showMessages('tired')">Open this when you're tired</button>
-</div>
+  </div>
 
-<div id="angry" class="message-box"></div>
-<div id="insecure" class="message-box"></div>
-<div id="sick" class="message-box"></div>
-<div id="achieve" class="message-box"></div>
-<div id="tired" class="message-box"></div>
+  <div id="message-box" class="message-box">
+    <p id="message" class="message"></p>
+    <button class="back-button" onclick="goBack()">Back to Options</button>
+    <button id="next-button" class="back-button" onclick="nextMessage()">Next</button>
+  </div>
 
-<!-- Heart Icon -->
-<div class="heart" onclick="showHeart()">❤️</div>
+  <div class="heart" onclick="throwHearts()">❤️</div>
 
-<script>
+  <script>
     const messages = {
-        angry: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're angry with me: "I'm sorry for making you upset, and I want to make things right. We will get through this together."`),
-        insecure: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're insecure: "You are loved just the way you are. Never feel less than amazing because you are perfect to me."`),
-        sick: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're not feeling well: "Take all the time you need to heal. I'll be by your side, sending you love and strength."`),
-        achieve: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you achieve something: "I'm so proud of you! Your hard work always pays off, and I’m here cheering for you every step of the way."`),
-        tired: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're tired: "I know you're feeling drained, but rest assured, you’re doing great and I’m here to help you recharge."`)
+      sad: [
+        "I love you so much. You're never alone.",
+        "I'm always here for you, no matter what.",
+        "You're my everything, and I'll be your support.",
+        "I’m right here for you, through the ups and downs.",
+        "You don’t have to face this alone. I'm with you.",
+        "You are so loved. Don't forget that.",
+        "Whenever you feel low, just know I'm here for you.",
+        "Even when you're sad, my love for you will never change.",
+        "You're stronger than you think. I'm always by your side.",
+        "I love you more than words can say, and I'll never leave."
+      ],
+      happy: [
+        "Seeing you happy makes me so glad. I love you!",
+        "Your smile lights up my world. Keep shining.",
+        "I’m so happy you’re happy. You deserve all the joy.",
+        "Every moment with you is filled with happiness.",
+        "Your happiness is everything to me. Keep smiling.",
+        "I love seeing you smile. It means the world to me.",
+        "You're my sunshine, and your happiness makes my day.",
+        "Your happiness fills my heart with love.",
+        "I'm so grateful for your joy. You're my happiness.",
+        "Keep being happy, my love. I’ll be here for you always."
+      ],
+      stressed: [
+        "Take a deep breath. I'm here for you.",
+        "You don’t have to do it all alone. I'm here.",
+        "I believe in you. You can get through this.",
+        "When you're stressed, just know I'm right here.",
+        "Take a moment for yourself. I’m always with you.",
+        "You’re strong, but I’ll help carry the weight.",
+        "You don’t have to carry everything by yourself. I’m here.",
+        "Don’t worry, everything will be okay. You’ve got this.",
+        "Let me take care of you. You deserve rest.",
+        "I’m here, and together we’ll get through this."
+      ],
+      miss: [
+        "I miss you so much. I can’t wait to see you again.",
+        "Every moment apart makes me miss you more.",
+        "I think about you all the time. You’re always in my heart.",
+        "I miss you more than words can express.",
+        "Being apart is hard, but my love for you stays strong.",
+        "I can’t wait to be with you again. I miss you dearly.",
+        "Even when we're apart, you're always with me in my heart.",
+        "The distance doesn't change how much I love you.",
+        "I miss the sound of your voice and the warmth of your touch.",
+        "I’m counting down the days until I can see you again."
+      ],
+      tired: [
+        "Take a rest, my love. You deserve it.",
+        "You’re doing so well, but remember to take a break.",
+        "I’ll be here for you, resting or working, always by your side.",
+        "Rest now, love. You’ve earned it.",
+        "Whenever you're tired, I’m here to help you recharge.",
+        "Take your time to rest. You’re important to me.",
+        "Rest is important. I’ll be here when you wake up.",
+        "I’ll always be here to support you when you need a break.",
+        "You are so strong, but even the strongest need rest.",
+        "Take it easy. I’m always here to help you unwind."
+      ],
+      angry: [
+        "I'm sorry for making you upset. Let's work it out together.",
+        "I didn’t mean to hurt you. I’m always here to listen.",
+        "I want to make things right. I love you no matter what.",
+        "Let’s take a deep breath and talk it through.",
+        "I'm here for you, always, through all emotions.",
+        "Whatever you’re feeling, I’m here to support you.",
+        "I understand how you feel. We’ll get through this together.",
+        "You mean everything to me, and I never want to upset you.",
+        "Let’s figure this out, side by side. I love you.",
+        "Even when we're angry, my love for you remains."
+      ],
+      insecure: [
+        "You are beautiful, inside and out. Never doubt that.",
+        "You don’t have to be perfect. I love you just as you are.",
+        "You are more than enough. I’m so lucky to have you.",
+        "Your worth isn't based on how you feel. You're amazing.",
+        "I see your strength and beauty every day.",
+        "You are incredible, and I’m proud of you.",
+        "Don't let insecurities hold you back. You're extraordinary.",
+        "You're my everything, and I love you for who you are.",
+        "There’s nothing about you that isn’t perfect to me.",
+        "You are worth all the love in the world. Never forget that."
+      ],
+      sick: [
+        "Rest and recover, my love. I'll be right here.",
+        "Take care of yourself. You mean the world to me.",
+        "I hope you feel better soon. I’m always here for you.",
+        "Even when you’re sick, you’re still the most amazing person.",
+        "Your health is my priority. Rest up, love.",
+        "I’m sending you all my love for a speedy recovery.",
+        "I’m here to take care of you, no matter what.",
+        "I’ll be here, waiting for you to feel better.",
+        "You’re strong, but don’t push yourself too hard. Rest.",
+        "You’re in my thoughts and prayers. Get well soon."
+      ],
+      achieve: [
+        "I’m so proud of everything you’ve accomplished. You’re amazing.",
+        "Your hard work always pays off. Keep shining.",
+        "You’ve achieved so much, and I’m so proud of you.",
+        "Every step forward is a victory. You’ve got this.",
+        "Your achievements are just the beginning of a bright future.",
+        "I’m in awe of your accomplishments. Keep going.",
+        "You’re a star, and your achievements prove it.",
+        "Every milestone is a reason to celebrate you.",
+        "Your success means so much to me. You’re incredible.",
+        "I’m proud of you, always. Keep reaching for the stars."
+      ]
     };
 
+    let currentMessageIndex = 0;
     let currentMessages = [];
-    let currentIndex = 0;
 
     function showMessages(type) {
-        const messageBox = document.getElementById(type);
-        currentMessages = messages[type];
-        currentIndex = 0;
-        messageBox.innerHTML = `
-            <h3>Messages for you, my love:</h3>
-            <p>${currentMessages[currentIndex]}</p>
-            <button onclick="nextMessage('${type}')">Next</button>
-            <button onclick="previousMessage('${type}')">Back</button>
-        `;
-        messageBox.style.display = "block";
+      currentMessages = messages[type];
+      currentMessageIndex = 0;
+      const options = document.getElementById('options');
+      const messageBox = document.getElementById('message-box');
+      const message = document.getElementById('message');
+      const nextButton = document.getElementById('next-button');
+
+      options.style.display = 'none';
+      messageBox.style.display = 'block';
+      message.innerHTML = currentMessages[currentMessageIndex];
+      nextButton.style.display = 'block';
     }
 
-    function nextMessage(type) {
-        if (currentIndex < currentMessages.length - 1) {
-            currentIndex++;
-            showMessages(type);
-        }
+    function nextMessage() {
+      const message = document.getElementById('message');
+      if (currentMessageIndex < currentMessages.length - 1) {
+        currentMessageIndex++;
+        message.innerHTML = currentMessages[currentMessageIndex];
+      } else {
+        nextButton.style.display = 'none';
+      }
     }
 
-    function previousMessage(type) {
-        if (currentIndex > 0) {
-            currentIndex--;
-            showMessages(type);
-        }
+    function goBack() {
+      const options = document.getElementById('options');
+      const messageBox = document.getElementById('message-box');
+      const nextButton = document.getElementById('next-button');
+
+      options.style.display = 'block';
+      messageBox.style.display = 'none';
+      nextButton.style.display = 'none';
     }
 
-    function showHeart() {
-        alert("I love you so much, and I will never leave you.");
-    }
-</script>
+    function throwHearts() {
+      for (let i = 0; i < 20; i++) {
+        const heart = document.createElement('div');
+        heart.textContent = '❤️';
+        heart.className = 'heart-animation';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = '100vh';
+        document.body.appendChild(heart);
 
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      }
+
+      setTimeout(() => {
+        alert("I love you so much, and I will never leave you. You are my everything.");
+      }, 2000);
+    }
+  </script>
 </body>
 </html>

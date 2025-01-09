@@ -10,6 +10,12 @@
             background-color: #f7f7f7;
             text-align: center;
             padding: 50px;
+            background-image: url('https://emoji.gg/assets/emoji/dinosaur.png'), url('https://emoji.gg/assets/emoji/cat.png');
+            background-size: 50px;
+            background-repeat: repeat;
+        }
+        h1 {
+            color: #333;
         }
         .button-container {
             margin-top: 20px;
@@ -40,6 +46,7 @@
             border-radius: 15px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             display: none;
+            color: #333;
         }
         .message-box p {
             font-size: 16px;
@@ -66,12 +73,14 @@
     <button class="button" onclick="showMessages('insecure')">Open this when you're insecure</button>
     <button class="button" onclick="showMessages('sick')">Open this when you're not feeling well</button>
     <button class="button" onclick="showMessages('achieve')">Open this when you achieve something</button>
+    <button class="button" onclick="showMessages('tired')">Open this when you're tired</button>
 </div>
 
 <div id="angry" class="message-box"></div>
 <div id="insecure" class="message-box"></div>
 <div id="sick" class="message-box"></div>
 <div id="achieve" class="message-box"></div>
+<div id="tired" class="message-box"></div>
 
 <!-- Heart Icon -->
 <div class="heart" onclick="showHeart()">❤️</div>
@@ -81,7 +90,8 @@
         angry: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're angry with me: "I'm sorry for making you upset, and I want to make things right. We will get through this together."`),
         insecure: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're insecure: "You are loved just the way you are. Never feel less than amazing because you are perfect to me."`),
         sick: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're not feeling well: "Take all the time you need to heal. I'll be by your side, sending you love and strength."`),
-        achieve: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you achieve something: "I'm so proud of you! Your hard work always pays off, and I’m here cheering for you every step of the way."`)
+        achieve: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you achieve something: "I'm so proud of you! Your hard work always pays off, and I’m here cheering for you every step of the way."`),
+        tired: Array.from({ length: 100 }, (_, index) => `Message ${index + 1} for when you're tired: "I know you're feeling drained, but rest assured, you’re doing great and I’m here to help you recharge."`)
     };
 
     let currentMessages = [];
